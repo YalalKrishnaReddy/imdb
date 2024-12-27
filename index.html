@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Search and bookmark your favorite movies." />
+    <meta name="keywords" content="movies, search, bookmark, favorites, film" />
+    <meta name="author" content="Your Name" />
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark"
+        aria-label="Main Navigation"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="./index.html">
+            <img src="./assets/logo1.png" alt="Logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex mx-auto w-100 justify-content-center my-2">
+              <input
+                class="form-control search-bar me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                id="search"
+              />
+              <button class="btn btn-outline-light" type="submit" id="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+            <ul class="navbar-nav ms-auto text-center">
+              <li class="nav-item" id="login-link">
+                <a
+                  class="nav-link text-light d-flex align-items-center"
+                  href="./login.html"
+                >
+                  <i class="bi bi-box-arrow-in-right me-1"></i> Login
+                </a>
+              </li>
+              <li class="nav-item ms-2" id="signup-link">
+                <a
+                  class="nav-link text-light d-flex align-items-center"
+                  href="./signup.html"
+                >
+                  <i class="bi bi-person-plus-fill me-1"></i> Signup
+                </a>
+              </li>
+              <li
+                class="nav-item ms-2"
+                id="favorites-link"
+                style="display: none"
+              >
+                <a
+                  class="nav-link text-light d-flex align-items-center"
+                  href="#"
+                  id="favorites-button"
+                >
+                  <i class="bi bi-heart me-1"></i> Favorites
+                </a>
+              </li>
+              <li
+                class="nav-item ms-2"
+                id="logout-btn-container"
+                style="display: none"
+              >
+                <button
+                  class="btn btn-outline-light d-flex align-items-center"
+                  id="logout-btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#logoutModal"
+                >
+                  <i class="bi bi-box-arrow-right me-1"></i> Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div
+        id="loadingLine"
+        class="loading-line"
+        role="progressbar"
+        aria-busy="true"
+      ></div>
+    </header>
+    <!-- Movie Detail Modal -->
+    <!-- Movie Detail Modal -->
+<div class="modal fade" id="movieDetailModal" tabindex="-1" aria-labelledby="movieDetailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieDetailModalLabel">Movie Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="movieDetailContent">
+          <!-- Movie Details will be populated here -->
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="movieImdbLink" class="btn btn-primary" target="_blank">View on IMDb</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <div class="title-container">
+      <i class="bi bi-film" style="font-size: 2rem; margin-right: 1rem"></i>
+      <h1 class="title" id="page-title">Top 100 Movies</h1>
+    </div>
+    <div id="movieCardContainer"></div>
+    <div class="text-center mt-3" id="loadMoreContainer">
+      <button class="btn btn-primary load-more" id="loadMore">Load More</button>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Are you sure you want to logout?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="confirmLogout">
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-light py-5" style="background-color: #111111;">
+      <div class="container">
+        <div class="row">
+          <!-- Website Section -->
+          <div class="col-md-6 mb-4">
+            <h5 class="text-uppercase">FilmScope & Co</h5>
+            <p>Your go-to platform to search and bookmark your favorite movies.</p>
+          </div>
+
+          <!-- Contact Section -->
+          <div class="col-md-6 text-center">
+            <h5 class="text-uppercase"></h5>
+            <button class="btn btn-outline-light mb-3">Get in Touch</button>
+            <div class="d-flex justify-content-center">
+              <a href="#" class="text-light me-3">
+                <i class="bi bi-instagram" style="font-size: 1.5rem;"></i>
+              </a>
+              <a href="#" class="text-light me-3">
+                <i class="bi bi-twitter" style="font-size: 1.5rem;"></i>
+              </a>
+              <a href="#" class="text-light me-3">
+                <i class="bi bi-facebook" style="font-size: 1.5rem;"></i>
+              </a>
+              <a href="mailto:yourname@example.com" class="text-light">
+                <i class="bi bi-envelope" style="font-size: 1.5rem;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>

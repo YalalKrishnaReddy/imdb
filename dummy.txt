@@ -1,0 +1,46 @@
+
+            <!-- <ul class="navbar-nav ms-auto d-flex align-items-center"> -->
+              <!-- <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle text-light"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Categories
+                </a>
+                <ul class="dropdown-menu shadow rounded" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Drama</a></li>
+                  <li><a class="dropdown-item" href="#">Comedy</a></li>
+                  <li><a class="dropdown-item" href="#">Thriller</a></li>
+                  <li><a class="dropdown-item" href="#">Horror</a></li>
+                </ul>
+              </li> -->
+    
+              <!-- <li class="nav-item ms-3">
+                <button type="button" class="btn btn-primary" id="favoritesBtn">
+                  Favorites
+                </button>
+              </li> -->
+    
+              
+    
+            <!-- </ul> -->
+
+
+
+            const firebaseConfig = {
+  apiKey: "AIzaSyDZ3rCpcqTiV1PNp83vLLja8eUhzft-7sY",
+  authDomain: "filmscope-915fb.firebaseapp.com",
+  projectId: "filmscope-915fb",
+  storageBucket: "filmscope-915fb.firebasestorage.app",
+  messagingSenderId: "219810572427",
+  appId: "1:219810572427:web:ce7cec6fa195daa2474c8e",
+};
+
+
+
+
